@@ -6,7 +6,7 @@ function Header({handleAddClick, weatherData }) {
 
   return (
     <header className="header">
-      <img className="header__logo" src={headerLogo} alt="" />
+      <img className="header__logo" src={headerLogo} alt="Header Logo" />
       <p className="header__date-and-location"> {currentDate}, {weatherData.city}</p>
       <button
         onClick={handleAddClick}
