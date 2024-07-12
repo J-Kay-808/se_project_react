@@ -33,7 +33,7 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garnment");
   };
-  console.log(handleAddClick);
+  // console.log(handleAddClick);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");

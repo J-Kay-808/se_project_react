@@ -106,3 +106,10 @@
     margin-top: 32px;
     padding: 0;
   }
+  .modal__submit:hover {
+    cursor: pointer;
+  }
+  
+  .modal__submit:disabled {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
