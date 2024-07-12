@@ -126,7 +126,7 @@ function App() {
           </Routes>
 
           <Main weatherData={weatherData} handleCardClick={handleCardClick} />
-          
+
           <Footer />
         </div>
         {activeModal === "add-garment" && (
