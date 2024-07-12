@@ -5,6 +5,7 @@ import "./App.css";
 import "../Header/Header.css";
 
 import { coordinates, APIkey } from "../../utils/constants";
+import { getItems, deleteItem, addItem } from "../../utils/Api";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";

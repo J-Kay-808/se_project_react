@@ -10,6 +10,10 @@ function Main({ weatherData, onCardClick, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const temp = weatherData?.temp?.[currentTemperatureUnit] || 999;
 
+  const handleDeleteCard = (id) => {
+    console.log(`Delete card with id: ${id}`);
+  };
+
   return (
     <main className="main">
       {" "}
@@ -19,19 +23,19 @@ function Main({ weatherData, onCardClick, clothingItems }) {
           Today is {temp} &deg; F / You may want to wear:
         </p>
         <ul className="cards__list">
-          {clothingItems
-            .filter((item) => {
-              return item.weather === weatherData.type;
-            })
-            .map((item) => {
-              return (
-                <ItemCard
-                  key={item._id}
-                  item={item}
-                  onCardClick={onCardClick}
-                />
-              );
-            })}
+          {clothingItems &&
+            clothingItems
+              .filter((item) => item.weather === weatherData?.type)
+              .map((item) => {
+                return (
+                  <ItemCard
+                    key={item._id}
+                    item={item}
+                    onCardClick={onCardClick}
+                    onDelete={handleDeleteCard}
+                  />
+                );
+              })}
         </ul>
       </section>
     </main>
