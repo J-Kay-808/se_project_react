@@ -10,12 +10,13 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
-import WeatherCard from "../WeatherCard/WeatherCard";
 import CurrentTemperatureUnitContext from "../Contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
+// import ModalWithForm from "../ModalWithForm/ModalWithForm";
+// import WeatherCard from "../WeatherCard/WeatherCard";
+
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -26,12 +27,13 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleAddClick = () => {
     setActiveModal("add-garnment");
   };
+  console.log(handleAddClick);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
