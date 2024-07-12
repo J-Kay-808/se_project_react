@@ -1,5 +1,5 @@
 import { processServerResponse } from "../utils/utils";
-const baseUrl = "http://localhost:3000/se_project_react/";
+const baseUrl = "http://localhost:3000/se_project_react";
 
 function getItems() {
   return fetch(`${baseUrl}/items`).then(processServerResponse);

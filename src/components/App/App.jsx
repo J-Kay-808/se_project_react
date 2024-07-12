@@ -109,7 +109,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   onCardClick={handleCardClick}
-                  // clothingItems={clothingItems}
+                  clothingItems={clothingItems}
                 />
               }
             />
@@ -124,7 +124,9 @@ function App() {
               }
             />
           </Routes>
+
           <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          
           <Footer />
         </div>
         {activeModal === "add-garment" && (

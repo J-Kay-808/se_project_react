@@ -24,7 +24,7 @@ function ItemModal({ activeModal, onClose, card, handleDeleteItem }) {
 
           <button
             type="button"
-            className="modal__delete-btn"
+            className="modal__delete-button"
             onClick={handleDeleteClick}
           >
             {" "}
