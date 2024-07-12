@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
+import "../Header/Header.css";
+
 import { coordinates, APIkey } from "../../utils/constants";
 import Header from "../Header/Header";
-import "../Header/Header.css";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
+import Profile from "../Profile/Profile";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import { filterWeatherData, getWeather } from "../../utils/weatherApi";
 import WeatherCard from "../WeatherCard/WeatherCard";
+import CurrentTemperatureUnitContext from "../Contexts/CurrentTemperatureUnitContext";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -17,8 +22,11 @@ function App() {
     temp: { F: 999, C: 999 },
     city: "",
   });
+
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleAddClick = () => {
     setActiveModal("add-garnment");
@@ -29,72 +37,109 @@ function App() {
     setSelectedCard(card);
   };
 
+  const onAddItem = (values, onDone) => {
+    //first add item to the server, then to the dom
+    return addItem(values)
+      .then((item) => {
+        setClothingItems([item, ...clothingItems]);
+        closeActiveModal();
+        onDone();
+      })
+      .catch(console.error);
+  };
+
+  const handleDeleteItem = (id) => {
+    return deleteItem(id)
+      .then(() => {
+        const updatedClothingItems = clothingItems.filter(
+          (item) => item._id !== id
+        );
+        setClothingItems(updatedClothingItems);
+      })
+      .catch((error) => {
+        console.error("Error deleting this item", error);
+      });
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
 
+  const handleToggleSwitchChange = () => {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
+  };
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
-      .then((data) => { 
+      .then((data) => {
         const filteredData = filterWeatherData(data);
-        setWeatherData(filteredData)
+        setWeatherData(filteredData);
         console.log(data);
+      })
+      .catch(console.error);
+  }, []);
+  console.log(currentTemperatureUnit);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
+        setClothingItems(data);
       })
       .catch(console.error);
   }, []);
 
   return (
     <div className="page">
-      <div className="page__content">
-        <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
-        <Footer />
-      </div>
-      <ModalWithForm
-        title="New Garnment"
-        buttonText="Add Garnment"
-        isOpen={activeModal === "add-garnment"}
-        handleCloseClick={closeActiveModal}
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <label htmlFor="name" className="modal__label">
-          Name{" "}
-          <input
-            type="text"
-            id="name"
-            className="modal__input"
-            placeholder="Name"
+        <div className="page__content">
+          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  onCardClick={handleCardClick}
+                  // clothingItems={clothingItems}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  onCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
+                />
+              }
+            />
+          </Routes>
+          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Footer />
+        </div>
+        {activeModal === "add-garment" && (
+          <AddItemModal
+            handleCloseModal={closeActiveModal}
+            isOpen={activeModal === "add-garment"}
+            onAddItem={onAddItem}
           />
-        </label>
-        <label htmlFor="imageUrl" className="modal__label">
-          Image{" "}
-          <input
-            type="text"
-            id="imageUrl"
-            className="modal__input"
-            placeholder="ImageURL"
+        )}
+        {activeModal === "preview" && (
+          <ItemModal
+            activeModal={activeModal}
+            card={selectedCard}
+            onClose={closeActiveModal}
+            handleDeleteItem={handleDeleteItem}
           />
-        </label>
-        <fieldset className="modal__radio-buttons">
-          <legend className="modal__legend">Select The Weather Type</legend>
-        </fieldset>
-        <label htmlFor="hot" className="modal__label modal__input_type-radio">
-          <input name="radio" id="hot" type="radio" className="modal__radio-input" />
-          Hot
-        </label>
-        <label htmlFor="warm" className="modal__label modal__input_type-radio">
-          <input name="radio" id="warm" type="radio" className="modal__radio-input" />
-          Warm
-        </label>
-        <label htmlFor="cold" className="modal__label modal__input_type-radio">
-          <input name="radio" id="cold" type="radio" className="modal__radio-input" />
-          Cold
-        </label>
-      </ModalWithForm>
-      <ItemModal
-        activeModal={activeModal}
-        card={selectedCard}
-        onClose={closeActiveModal}
-      />
+        )}
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }
