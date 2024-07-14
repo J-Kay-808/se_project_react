@@ -31,7 +31,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleAddClick = () => {
-    setActiveModal("add-garnment");
+    setActiveModal("add-garment");
   };
   // console.log(handleAddClick);
 

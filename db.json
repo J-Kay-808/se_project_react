@@ -13,12 +13,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e"
     },
     {
-      "_id": 2,
-      "name": "Cap",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591"
-    },
-    {
       "_id": 3,
       "name": "Coat",
       "weather": "cold",
@@ -73,22 +67,10 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Shorts.png?etag=d728c496643f610de8d8fea92dd915ba"
     },
     {
-      "_id": 12,
-      "name": "Skirt",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Skirt.png?etag=27a6bea7e1b63218820d615876fa31d1"
-    },
-    {
       "_id": 13,
       "name": "Sneakers",
       "weather": "warm",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f"
-    },
-    {
-      "_id": 14,
-      "name": "Sunglasses",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432"
     },
     {
       "_id": 15,
@@ -101,6 +83,30 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "Beanie",
+      "weather": "cold",
+      "imageUrl": "https://www.stormtechusa.com/cdn/shop/products/BTV-1_BLACK-NoTag_2000x.jpg?v=1680982431",
+      "_id": 17
+    },
+    {
+      "name": "Aviators",
+      "weather": "hot",
+      "imageUrl": "https://www.sportrx.com/sportrx-blog/wp-content/uploads/2021/03/Aviators-guide-for-Maui-Jim.png",
+      "_id": 18
+    },
+    {
+      "name": "SnapBack",
+      "weather": "hot",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaqogWT97Zbz7YL_I3Q6WwUQ57vKw_z93BVQ&s",
+      "_id": 19
+    },
+    {
+      "name": "Surf Shorts",
+      "weather": "hot",
+      "imageUrl": "https://cdna.lystit.com/photos/2013/08/08/hurley-white-lightweight-supersuede-tropical-neon-board-shorts-product-1-12509269-220613583.jpeg",
+      "_id": 20
     }
   ]
 }
