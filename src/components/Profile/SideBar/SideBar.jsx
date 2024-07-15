@@ -1,5 +1,6 @@
 import "./SideBar.css";
-import avatar from "../../images/avatar.png";
+import avatar from "../../../images/avatar.png";
+
 
 function Sidebar() {
   return (
