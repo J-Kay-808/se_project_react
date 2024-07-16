@@ -2,62 +2,62 @@ export const weatherOptions = [
   {
     day: true,
     condition: "clear",
-    url: new URL("../images/day/clear.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/day/sunny.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "clouds",
-    url: new URL("../images/day/cloudy.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/day/cloudy.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "fog",
-    url: new URL("../images/day/fog.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/day/fog.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "rainy",
-    url: new URL("../images/day/rain.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/day/rain.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "snow",
-    url: new URL("../images/day/snow.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/day/snow.png", import.meta.url).href,
   },
   {
     day: true,
     condition: "storm",
-    url: new URL("../images/day/storm.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/day/storm.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "clear",
-    url: new URL("../images/night/clear.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/night/clear.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "clouds",
-    url: new URL("../images/night/cloudy.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/night/cloudy.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "fog",
-    url: new URL("../images/day/fog.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/day/fog.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "rain",
-    url: new URL("../images/night/rain.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/night/rain.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "snow",
-    url: new URL("../images/night/snow.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/night/snow.png", import.meta.url).href,
   },
   {
     day: false,
     condition: "storm",
-    url: new URL("../images/night/storm.svg", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/night/storm.png", import.meta.url).href,
   },
 ];
 
@@ -102,10 +102,10 @@ export const weatherOptions = [
 
 export const defaultWeatherOptions = {
   day: {
-    url: new URL("../images/day/default.png", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/day/default.png", import.meta.url).href,
   },
   night: {
-    url: new URL("../images/night/default.png", import.meta.url).href,
+    url: new URL( /* @vite-ignore */"../images/night/default.png", import.meta.url).href,
   },
 };
 
