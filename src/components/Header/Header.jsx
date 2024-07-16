@@ -20,9 +20,9 @@ function Header({ handleAddClick, weatherData }) {
           {currentDate}, {weatherData.city}
         </p>
       </div>
+
       <div className="header__temp-and-user">
         <ToggleSwitch />
-
         <button
           onClick={handleAddClick}
           type="button"
@@ -34,15 +34,14 @@ function Header({ handleAddClick, weatherData }) {
         <div className="header__user-container">
           <Link to="/profile" className="header__link">
             Profile
-            {/* <div className="header__user-container"> */}
-            <span className="header__username"> Terrence Tegegne</span>
-            <img
-              src={headerAvatar}
-              alt="Avatar Logo"
-              className="header__avatar"
-            />
-            {/* </div> */}
           </Link>
+
+          <span className="header__username"> Terrence Tegegne</span>
+          <img
+            src={headerAvatar}
+            alt="Avatar Logo"
+            className="header__avatar"
+          />
         </div>
       </div>
     </header>
