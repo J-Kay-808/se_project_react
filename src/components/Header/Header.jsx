@@ -31,6 +31,7 @@ function Header({ handleAddClick, weatherData }) {
           + ADD CLOTHES
         </button>
 
+        <div className="header__user-container">
           <Link to="/profile" className="header__link">
             Profile
             {/* <div className="header__user-container"> */}
@@ -42,6 +43,7 @@ function Header({ handleAddClick, weatherData }) {
             />
             {/* </div> */}
           </Link>
+        </div>
       </div>
     </header>
   );

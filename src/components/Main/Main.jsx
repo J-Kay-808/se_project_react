@@ -19,8 +19,16 @@ function Main({ weatherData, onCardClick, clothingItems }) {
       {" "}
       <WeatherCard weatherData={weatherData} />
       <section className="cards">
-        <p className="cards__text">
+        {/* <p className="cards__text">
           Today is {temp} &deg; F / You may want to wear:
+        </p> */}
+        <p className="cards__text">
+          {" "}
+          Today is{" "}
+          {currentTemperatureUnit === "F"
+            ? `${weatherData.temp.F}°F`
+            : `${weatherData.temp.C}°C`}{" "}
+          / You may want to wear:{" "}
         </p>
         <ul className="cards__list">
           {clothingItems &&

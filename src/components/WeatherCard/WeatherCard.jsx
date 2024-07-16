@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const temp = weatherData?.temp?.[currentTemperatureUnit] || 999;
+  // const temp = weatherData?.temp?.[currentTemperatureUnit] || 999;
 
 
   const foundOption = weatherOptions.find((option) => {
@@ -26,7 +26,8 @@ function WeatherCard({ weatherData }) {
 
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">{temp} &deg;</p>
+      {/* <p className="weather-card__temp">{temp} &deg;</p> */}
+      <p className="weather-card__temp">{currentTemperatureUnit === 'F' ? `${weatherData.temp.F}°F` : `${weatherData.temp.C}°C`}</p>
       <img
         src={weatherOption?.url}
         alt={weatherOption?.condition}
