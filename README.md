@@ -1,9 +1,9 @@
-## **WTWR (What to Wear)** ##
+## **WTWR (What to Wear)** 
 
-## **Overview** ##
+## **Overview** 
 - WTWR is a React-based web app that suggests clothing based on real-time weather data. By fetching weather information from a Weather API, it helps users choose what to wear according to the current conditions. This phase focuses on building a responsive, user-friendly interface.
 
-## **Technologies** ##
+## **Technologies** 
 
 - **React:** Front-end framework
 - **JavaScript:** Core logic
@@ -12,7 +12,7 @@
 - **Responsive Design:** Optimized for all devices
 - **Git:** Version control
 
-## **Features** ##
+## **Features**
 
 - Real-time weather updates
 - Clothing recommendations
