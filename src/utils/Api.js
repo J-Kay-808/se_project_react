@@ -1,4 +1,4 @@
-import { processServerResponse } from "../utils/utils";
+import { processServerResponse } from "./utils";
 const baseUrl = 'http://localhost:3001';
 
 function getItems() {

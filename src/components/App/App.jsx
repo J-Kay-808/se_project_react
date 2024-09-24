@@ -16,6 +16,7 @@ import CurrentTemperatureUnitContext from "../../Contexts/CurrentTemperatureUnit
 import AddItemModal from "../AddItemModal/AddItemModal";
 // import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // import WeatherCard from "../WeatherCard/WeatherCard";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
-  // console.log(handleAddClick);
+  
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -116,11 +117,13 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  clothingItems={clothingItems}
-                  onCardClick={handleCardClick}
-                  handleAddClick={handleAddClick}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    clothingItems={clothingItems}
+                    onCardClick={handleCardClick}
+                    handleAddClick={handleAddClick}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
