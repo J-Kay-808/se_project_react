@@ -6,7 +6,7 @@ import CurrentTemperatureUnitContext from "../../Contexts/CurrentTemperatureUnit
 
 function Main({ weatherData, onCardClick, clothingItems }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const temp = weatherData?.temp?.[currentTemperatureUnit] || 999;
+  // const temp = weatherData?.temp?.[currentTemperatureUnit] || 999;
 
   const handleDeleteCard = (id) => {
     console.log(`Delete card with id: ${id}`);

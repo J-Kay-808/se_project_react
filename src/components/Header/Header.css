@@ -56,9 +56,75 @@
   margin: 0;
 }
 
+.header__register {
+  margin: 0 20px 0 auto;
+  font-weight: 700;
+  border: none;
+  background: none;
+}
+
+.header__register:hover {
+  cursor: pointer;
+}
+
+.header__login {
+  margin: 0 20px 0 auto;
+  font-weight: 700;
+  border: none;
+  background: none;
+}
+
+.header__login:hover {
+  cursor: pointer;
+}
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000;
+}
+
+.header__user-name {
+  font-family: "CabinetGrotesk-Medium";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24.8px;
+  text-align: left;
+}
+
+.header__link {
+  text-decoration: none;
+}
+
 @media screen and (min-width: 330px) and (max-width: 530px) {
   .header {
     flex-direction: column;
     gap: 20px;
   }
+  .header__logo {
+    margin-right: 12px;
+  }
+
+  .header__logo-and-date {
+    padding: 20px 0;
+    border-bottom: 2px solid;
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .header__date-and-location {
+    font-size: 16px;
+  }
+
+  .header__temp-and-user {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  .header__user-name {
+    font-size: 16px;
+  }
+
 }

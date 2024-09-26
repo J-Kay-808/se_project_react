@@ -40,6 +40,10 @@
     cursor: pointer;
   }
   
+  .model__delete_hidden {
+    display: none;
+  }
+  
   .modal__footer {
     display: flex;
     flex-direction: row;
