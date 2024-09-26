@@ -1,4 +1,4 @@
-import headerAvatar from "../../images/avatar.png";
+// import headerAvatar from "../../images/avatar.png";
 import headerLogo from "../../images/header-Logo.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
