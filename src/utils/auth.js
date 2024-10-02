@@ -2,18 +2,22 @@ export const baseUrl = "http://localhost:3001";
 import { processServerResponse } from "./utils";
 
 
-function registerUser({ name, avatar, email, password }) {
-  const payload = JSON.stringify({ name, avatar, email, password });
-  console.log(payload); // Log the payload
+function registerUser({ email, password, name, avatar }) {
+  const payload = JSON.stringify({ email, password, name, avatar });
+  console.log(payload); // Double check the payload being sent
+
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, avatar, email, password }),
-  }).then(processServerResponse);
+    body: payload,  // Send the correct payload
+  })
+    .then((res) => {
+      console.log(res); // Log the response to see what's happening
+      return processServerResponse(res);
+    })
 }
-
 function signinUser({ email, password }) {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",

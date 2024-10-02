@@ -10,12 +10,13 @@ const Register = ({ isOpen, handleRegistration, onClose, navigateToLogin }) => {
     avatar: "",
   });
 
+
   if (!isOpen) {
     return null;
   }
 
   const isFormValid = () => {
-    return data.name && data.email && data.password && data.avatar;
+    return data.email && data.password && data.name && data.avatar;
   };
 
   const handleChange = (e) => {
@@ -26,13 +27,11 @@ const Register = ({ isOpen, handleRegistration, onClose, navigateToLogin }) => {
     }));
   };
 
-  const handleSubmit = () => {
-    handleRegistration(values, resetCurrentForm);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleRegistration(data);
   };
 
-  const resetCurrentForm = () => {
-    resetForm({ email: "", password: "", name: "", avatar: "" });
-  };
 
   return (
     <ModalWithForm
