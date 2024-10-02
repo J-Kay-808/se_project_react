@@ -1,4 +1,4 @@
-export const baseUrl = "http://localhost:3001/se_project_react/";
+export const baseUrl = "http://localhost:3001/se_project_react";
 import { processServerResponse } from "./utils";
 
 
@@ -13,11 +13,10 @@ function registerUser({ email, password, name, avatar }) {
     },
     body: payload,  // Send the correct payload
   })
-    .then((res) => {
-      console.log(res); // Log the response to see what's happening
-      return processServerResponse(res);
-    })
+    .then(processServerResponse);
 }
+
+
 function signinUser({ email, password }) {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
