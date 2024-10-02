@@ -1,4 +1,4 @@
-export const baseUrl = "http://localhost:3001";
+export const baseUrl = "http://localhost:3001/se_project_react/";
 import { processServerResponse } from "./utils";
 
 

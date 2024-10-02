@@ -1,6 +1,6 @@
 import { processServerResponse } from "./utils";
 import { getToken } from "../utils/token";
-const baseUrl = 'http://localhost:3001';
+const baseUrl = 'http://localhost:3001/se_project_react';
 
 function getItems() {
   return fetch(`${baseUrl}/items`).then(processServerResponse);
