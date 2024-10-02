@@ -26,9 +26,12 @@ const Register = ({ isOpen, handleRegistration, onClose, navigateToLogin }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleRegistration(data);
+  const handleSubmit = () => {
+    handleRegistration(values, resetCurrentForm);
+  };
+
+  const resetCurrentForm = () => {
+    resetForm({ email: "", password: "", name: "", avatar: "" });
   };
 
   return (

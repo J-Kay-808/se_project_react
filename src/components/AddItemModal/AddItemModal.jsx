@@ -2,16 +2,19 @@ import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
-  const [values, setValues] = useState({ name: "", imageUrl: "", weather: "" });
+  const [name, setName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [weather, setWeather] = useState("");
 
-  const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+  const handleNameChange = (e) => setName(e.target.value);
+  const handleImageUrlChange = (e) => setImageUrl(e.target.value);
+  const handleWeatherChange = (e) => setWeather(e.target.value);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    onAddItem(values, () => {
-      setValues({ name: "", imageUrl: "", weather: "" });
+    onAddItem({ name, imageUrl, weather }, () => {
+      setName("");
+      setImageUrl("");
+      setWeather("");
     });
   };
 
@@ -28,8 +31,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
         <input
           placeholder="Name"
           name="name"
-          value={values.name}
-          onChange={handleChange}
+          // value={values.name}
+          onChange={handleNameChange}
           id="name"
           type="text"
           className="modal__input"
@@ -41,9 +44,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
         Image{" "}
         <input
           placeholder="Image Url"
-          value={values.imageUrl}
+          // value={values.imageUrl}
           name="imageUrl"
-          onChange={handleChange}
+          onChange={handleImageUrlChange}
           id="imageUrl"
           type="url"
           className="modal__input"
@@ -59,9 +62,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             id="hot"
             value="hot"
             type="radio"
-            onChange={handleChange}
+            onChange={handleWeatherChange}
             className="modal__radio-input"
-            checked={values.weather === "hot"}
+            // checked={values.weather === "hot"}
           />
           Hot
         </label>
@@ -72,8 +75,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             value="warm"
             type="radio"
             className="modal__radio-input"
-            checked={values.weather === "warm"}
-            onChange={handleChange}
+            // checked={values.weather === "warm"}
+            onChange={handleWeatherChange}
           />
           Warm
         </label>
@@ -84,8 +87,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             id="cold"
             type="radio"
             className="modal__radio-input"
-            checked={values.weather === "cold"}
-            onChange={handleChange}
+            // checked={values.weather === "cold"}
+            onChange={handleWeatherChange}
           />
           Cold
         </label>

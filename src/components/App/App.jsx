@@ -79,7 +79,7 @@ function App() {
     }
 
     return auth
-      .authorize(email, password)
+      .signinUser(email, password)
       .then((data) => {
         console.log(data);
         if (data.token) {

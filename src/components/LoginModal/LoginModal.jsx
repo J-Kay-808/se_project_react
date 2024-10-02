@@ -20,10 +20,13 @@ const Login = ({ handleLogin, isOpen, onClose, navigateToSignUp }) => {
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        handleLogin(data);
-    };
+    const handleSubmit = () => {
+        handleLogin(values, resetCurrentForm);
+      };
+    
+      const resetCurrentForm = () => {
+        resetForm({ email: "", password: "" });
+      };
 
     return (
         <ModalWithForm
