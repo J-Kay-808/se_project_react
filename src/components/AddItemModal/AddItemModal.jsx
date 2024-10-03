@@ -19,6 +19,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     });
   };
 
+  
+
   return (
     <ModalWithForm
       title="new garment"

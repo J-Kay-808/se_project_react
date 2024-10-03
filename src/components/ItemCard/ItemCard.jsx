@@ -17,7 +17,9 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   const handleCardClick = () => {
     onCardClick(item);
-  };  return (
+  };  
+  
+  return (
     <li className="card">
     <div className="card__info">
       <h2 className="card__name">{item.name}</h2>

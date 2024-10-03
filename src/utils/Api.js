@@ -1,6 +1,6 @@
 import { processServerResponse } from "./utils";
 import { getToken } from "../utils/token";
-const baseUrl = 'http://localhost:3001/se_project_react';
+ const baseUrl = 'http://localhost:3001';
 
 function getItems() {
   return fetch(`${baseUrl}/items`).then(processServerResponse);
@@ -16,14 +16,14 @@ function deleteItem(id, token) {
   }).then(processServerResponse);
 }
 
-function addItem({ name, weather, imageUrl }, token) {
+function addItem({ name, imageUrl, weather, }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, weather, imageUrl }),
+    body: JSON.stringify({ name, imageUrl, weather }),
   }).then(processServerResponse);
 }
 

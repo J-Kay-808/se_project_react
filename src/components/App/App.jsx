@@ -54,7 +54,7 @@ function App() {
 
   const handleRegistration = ({ name, avatar, email, password }) => {
     return auth
-      .registerUser(name, avatar, email, password)
+      .registerUser({ name, avatar, email, password })
       .then(() => {
         handleLogin({ email, password });
         closeActiveModal();
@@ -84,9 +84,10 @@ function App() {
         console.log(data);
         if (data.token) {
           setToken(data.token);
-          api.getUserInfo(data.token).then((userData) => {
+          auth.getUserByToken(data.token).then((userData) => {
             setCurrentUser(userData);
             setLoggedIn(true);
+            localStorage.setItem("jwt", data.token)
             closeActiveModal();
             navigate("/profile");
           });
@@ -103,7 +104,7 @@ function App() {
     }
 
     api
-      .getUserInfo(jwt)
+      .getUserByToken(jwt)
       .then(({ name, avatar, _id }) => {
         setLoggedIn(true);
         setCurrentUser({ name, avatar, _id });
@@ -153,18 +154,16 @@ function App() {
   };
 
   const handleDeleteItem = (id) => {
-    return deleteItem(id)
+    const jwt = getToken();
+    deleteItem(id, jwt)
       .then(() => {
-        const updatedClothingItems = clothingItems.filter(
-          (item) => item._id !== id
+        setClothingItems((clothingItems) =>
+          clothingItems.filter((item) => item._id !== id),
         );
-        setClothingItems(updatedClothingItems);
+        closeActiveModal();
       })
-      .catch((error) => {
-        console.error("Error deleting this item", error);
-      });
+      .catch(console.error);
   };
-
 
   const closeActiveModal = () => {
     setActiveModal("");

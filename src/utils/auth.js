@@ -1,24 +1,19 @@
-export const baseUrl = "http://localhost:3001/se_project_react";
+export const BASE_URL = "http://localhost:3001";
 import { processServerResponse } from "./utils";
 
-
-function registerUser({ email, password, name, avatar }) {
-  const payload = JSON.stringify({ email, password, name, avatar });
-  console.log(payload); // Double check the payload being sent
-
-  return fetch(`${baseUrl}/signup`, {
+function registerUser({ name, avatar, email, password }) {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: payload,  // Send the correct payload
-  })
-    .then(processServerResponse);
+    body: JSON.stringify({ name, avatar, email, password }),
+  }).then(processServerResponse);
 }
 
 
 function signinUser({ email, password }) {
-  return fetch(`${baseUrl}/signin`, {
+  return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -30,7 +25,7 @@ function signinUser({ email, password }) {
 
 
 function getUserByToken(token) {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -40,7 +35,7 @@ function getUserByToken(token) {
 }
 
 function updateCurrentUser(user, token) {
-  return fetch(`${baseUrl}/users/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: "PATCH",
     headers: {
       Accept: "application/json",

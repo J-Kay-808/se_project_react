@@ -30,6 +30,7 @@ const Register = ({ isOpen, handleRegistration, onClose, navigateToLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleRegistration(data);
+    console.log(handleSubmit)
   };
 
 
