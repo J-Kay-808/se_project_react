@@ -26,9 +26,6 @@ const Login = ({ handleLogin, isOpen, onClose, navigateToSignUp }) => {
         console.log(handleSubmit)
     };
 
-
-
-
     return (
         <ModalWithForm
             title="Log In"

@@ -1,6 +1,6 @@
 import { processServerResponse } from "./utils";
 import { getToken } from "../utils/token";
- const baseUrl = 'http://localhost:3001';
+ const baseUrl = "http://localhost:3001";
 
 function getItems() {
   return fetch(`${baseUrl}/items`).then(processServerResponse);
@@ -27,7 +27,7 @@ function addItem({ name, imageUrl, weather, }, token) {
   }).then(processServerResponse);
 }
 
-function likeItem(id) {
+function likeCard(id) {
   const token = getToken();
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
@@ -38,7 +38,7 @@ function likeItem(id) {
   }).then(processServerResponse);
 }
 
-function unlikeItem(id) {
+function unlikeCard(id) {
   const token = getToken();
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
@@ -49,4 +49,4 @@ function unlikeItem(id) {
   }).then(processServerResponse);
 }
 
-export { getItems, deleteItem, addItem, likeItem, unlikeItem };
+export { getItems, deleteItem, addItem, likeCard, unlikeCard };

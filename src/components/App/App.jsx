@@ -19,7 +19,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import CurrentUserContext from "../../Contexts/CurrentUserContext";
 import { setToken, getToken, removeToken } from "../../utils/token";
-import { getItems, addItem, deleteItem } from "../../utils/Api";
+import { getItems, deleteItem, addItem, likeCard, unlikeCard } from "../../utils/Api";
 // import {
 //   registerUser,
 //   signinUser,
@@ -62,24 +62,37 @@ function App() {
       .catch(console.error);
   };
 
-  const handleEditUser = (data) => {
-    const jwt = getToken();
-    return api
-      .updateCurrentUser(data, jwt)
-      .then((res) => {
-        setCurrentUser(res);
-        closeActiveModal();
-      })
-      .catch(console.error);
-  };
+  // const handleLogin = ({ email, password }) => {
+  //   if (!email || !password) {
+  //     return;
+  //   }
 
+  //   return auth
+  //     .signinUser({ email, password })
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data.token) {
+  //         setToken(data.token);
+  //         auth.getUserByToken(data.token).then((userData) => {
+  //           setCurrentUser(userData);
+  //           setLoggedIn(true);
+  //           localStorage.setItem("jwt", data.token)
+  //           closeActiveModal();
+  //           navigate("/profile");
+  //         });
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error("Login failed", err);
+  //     });
+  // };
   const handleLogin = ({ email, password }) => {
     if (!email || !password) {
       return;
     }
 
     return auth
-      .signinUser(email, password)
+      .signinUser({ email, password })
       .then((data) => {
         console.log(data);
         if (data.token) {
@@ -93,7 +106,9 @@ function App() {
           });
         }
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error("Login failed", err);
+      });
   };
 
   useEffect(() => {
@@ -112,6 +127,19 @@ function App() {
       })
       .catch(console.error);
   }, [navigate]);
+
+  const handleEditUser = (data) => {
+    const jwt = getToken();
+    return api
+      .updateCurrentUser(data, jwt)
+      .then((res) => {
+        setCurrentUser(res);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+
 
   const handleSignUpClick = () => {
     setActiveModal("register");
@@ -207,7 +235,7 @@ function App() {
 
     !isLiked
       ? api
-        .addCardLike(id, jwt)
+        .likeCard(id, jwt)
         .then((updatedCard) => {
           console.log(updatedCard);
           setClothingItems((cards) =>
@@ -227,6 +255,7 @@ function App() {
         })
         .catch((err) => console.log(err));
   };
+
 
 
   return (
@@ -272,7 +301,6 @@ function App() {
               />
             </Routes>
 
-            {/* <Main weatherData={weatherData} handleCardClick={handleCardClick} /> */}
 
             <Footer />
           </div>

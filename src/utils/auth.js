@@ -1,8 +1,8 @@
-export const BASE_URL = "http://localhost:3001";
+export const baseUrl = "http://localhost:3001";
 import { processServerResponse } from "./utils";
 
 function registerUser({ name, avatar, email, password }) {
-  return fetch(`${BASE_URL}/signup`, {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -13,7 +13,7 @@ function registerUser({ name, avatar, email, password }) {
 
 
 function signinUser({ email, password }) {
-  return fetch(`${BASE_URL}/signin`, {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -25,7 +25,7 @@ function signinUser({ email, password }) {
 
 
 function getUserByToken(token) {
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +35,7 @@ function getUserByToken(token) {
 }
 
 function updateCurrentUser(user, token) {
-  return fetch(`${BASE_URL}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       Accept: "application/json",
