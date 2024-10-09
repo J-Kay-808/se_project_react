@@ -19,7 +19,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import CurrentUserContext from "../../Contexts/CurrentUserContext";
 import { setToken, getToken, removeToken } from "../../utils/token";
-import { getItems, deleteItem, addItem, likeCard, unlikeCard } from "../../utils/Api";
+// import { getItems, deleteItem, addItem, likeCard, unlikeCard } from "../../utils/Api";
 // import {
 //   registerUser,
 //   signinUser,
@@ -62,30 +62,6 @@ function App() {
       .catch(console.error);
   };
 
-  // const handleLogin = ({ email, password }) => {
-  //   if (!email || !password) {
-  //     return;
-  //   }
-
-  //   return auth
-  //     .signinUser({ email, password })
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data.token) {
-  //         setToken(data.token);
-  //         auth.getUserByToken(data.token).then((userData) => {
-  //           setCurrentUser(userData);
-  //           setLoggedIn(true);
-  //           localStorage.setItem("jwt", data.token)
-  //           closeActiveModal();
-  //           navigate("/profile");
-  //         });
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error("Login failed", err);
-  //     });
-  // };
   const handleLogin = ({ email, password }) => {
     if (!email || !password) {
       return;
@@ -118,7 +94,7 @@ function App() {
       return;
     }
 
-    api
+    auth
       .getUserByToken(jwt)
       .then(({ name, avatar, _id }) => {
         setLoggedIn(true);
@@ -130,7 +106,7 @@ function App() {
 
   const handleEditUser = (data) => {
     const jwt = getToken();
-    return api
+    return auth
       .updateCurrentUser(data, jwt)
       .then((res) => {
         setCurrentUser(res);
@@ -172,8 +148,9 @@ function App() {
 
   const onAddItem = (item) => {
     const jwt = getToken();
-
-    return addItem(item, jwt)
+ 
+      return api
+      .addItem(item, jwt)
       .then((newItem) => {
         setClothingItems((clothingItems) => [newItem.data, ...clothingItems]);
         closeActiveModal();
@@ -183,7 +160,8 @@ function App() {
 
   const handleDeleteItem = (id) => {
     const jwt = getToken();
-    deleteItem(id, jwt)
+    api
+      .deleteItem(id, jwt)
       .then(() => {
         setClothingItems((clothingItems) =>
           clothingItems.filter((item) => item._id !== id),
@@ -222,7 +200,8 @@ function App() {
   console.log(currentTemperatureUnit);
 
   useEffect(() => {
-    getItems()
+    api
+      .getItems()
       .then((data) => {
         console.log(data);
         setClothingItems(data);
