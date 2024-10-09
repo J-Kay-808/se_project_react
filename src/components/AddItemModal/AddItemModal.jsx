@@ -23,8 +23,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   return (
     <ModalWithForm
-      title="new garment"
-      buttonText="Add garment"
+      title="New Garment"
+      buttonText="Add Garment"
       isOpen={isOpen}
       onClose={handleCloseModal}
       onSubmit={handleSubmit}
@@ -95,6 +95,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           />
           Cold
         </label>
+        <button type="submit" className="modal__submit">
+        Add garment
+      </button>
       </fieldset>{" "}
     </ModalWithForm>
   );
