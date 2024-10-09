@@ -20,15 +20,15 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import CurrentUserContext from "../../Contexts/CurrentUserContext";
 import { setToken, getToken, removeToken } from "../../utils/token";
 import { getItems, deleteItem, addItem, likeCard, unlikeCard } from "../../utils/Api";
-// import {
-//   registerUser,
-//   signinUser,
-//   getUserByToken,
-//   updateCurrentUser,
-// } from "../../utils/auth";
+import {
+  registerUser,
+  signinUser,
+  getUserByToken,
+  updateCurrentUser,
+} from "../../utils/auth";
 
-import * as api from "../../utils/Api";
-import * as auth from "../../utils/auth";
+// import * as api from "../../utils/Api";
+// import * as auth from "../../utils/auth";
 
 
 function App() {
@@ -53,8 +53,9 @@ function App() {
   const navigate = useNavigate();
 
   const handleRegistration = ({ name, avatar, email, password }) => {
-    return auth
-      .registerUser({ name, avatar, email, password })
+    if (name, avatar, email, password) return;
+
+    registerUser({ name, avatar, email, password })
       .then(() => {
         handleLogin({ email, password });
         closeActiveModal();
@@ -90,9 +91,7 @@ function App() {
     if (!email || !password) {
       return;
     }
-
-    return auth
-      .signinUser({ email, password })
+    signinUser({ email, password })
       .then((data) => {
         console.log(data);
         if (data.token) {
@@ -117,9 +116,7 @@ function App() {
     if (!jwt) {
       return;
     }
-
-    api
-      .getUserByToken(jwt)
+    getUserByToken(jwt)
       .then(({ name, avatar, _id }) => {
         setLoggedIn(true);
         setCurrentUser({ name, avatar, _id });
@@ -129,14 +126,25 @@ function App() {
   }, [navigate]);
 
   const handleEditUser = (data) => {
-    const jwt = getToken();
-    return api
-      .updateCurrentUser(data, jwt)
+    const token = getToken();
+    return;
+      updateCurrentUser(data, jwt)
       .then((res) => {
         setCurrentUser(res);
         closeActiveModal();
       })
       .catch(console.error);
+  };
+  const handleEditProfile = (values, resetCurrentForm) => {
+    const token = getToken();
+    function makeRequest() {
+      return updateCurrentUser(values, token).then((userData) => {
+        console.log(userData);
+        setCurrentUser(userData);
+        resetCurrentForm();
+      });
+    }
+    handleSubmit(makeRequest);
   };
 
 

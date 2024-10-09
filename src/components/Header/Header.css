@@ -38,6 +38,10 @@
   background: none;
 }
 
+.header__button_hidden {
+  display: none;
+}
+
 .header__add-clothes-button:hover:hover {
   cursor: pointer;
 }

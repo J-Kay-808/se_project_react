@@ -1,5 +1,5 @@
 import { processServerResponse } from "./utils";
-import { getToken } from "../utils/token";
+import { getToken } from "./token";
  const baseUrl = "http://localhost:3001";
 
 function getItems() {

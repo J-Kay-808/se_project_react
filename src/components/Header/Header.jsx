@@ -38,7 +38,8 @@ function Header({
         <button
           onClick={handleAddClick}
           type="button"
-          className="header__add-clothes-button"
+          // className="header__add-clothes-button"
+          className={`header__add-clothes-button ${!isLoggedIn ? "header__add_button_hidden" : ""}`}
         >
           + ADD CLOTHES
         </button>
