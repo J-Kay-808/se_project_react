@@ -96,9 +96,9 @@ function App() {
 
     auth
       .getUserByToken(jwt)
-      .then(({ name, avatar, _id }) => {
+      .then((user) => {
         setLoggedIn(true);
-        setCurrentUser({ name, avatar, _id });
+        setCurrentUser(user.data);
         navigate("/profile");
       })
       .catch(console.error);

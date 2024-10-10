@@ -1,5 +1,7 @@
 import "../ItemCard/ItemCard.css";
 import { useContext } from "react";
+import likeButton from "../../images/like-Button.svg";
+import likeButtonActive from "../../images/like-button_active.svg";
 import CurrentUserContext from "../../Contexts/CurrentUserContext";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
@@ -23,13 +25,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
     <li className="card">
     <div className="card__info">
       <h2 className="card__name">{item.name}</h2>
-      {isLoggedIn && (
-        <button
-          className={itemLikeButtonClassName}
-          onClick={handleLike}
-        ></button>
-      )}
-    </div>
+      <img className={itemLikeButtonClassName} onClick={handleLike} src={isLiked ? likeButton : likeButtonActive} />    </div>
     <img
       onClick={handleCardClick}
       className="card__image"
