@@ -10,9 +10,9 @@ function Sidebar({ handleEditProfileClick, handleSignOut }) {
     <div className="sidebar">
       <div className="sidebar__avatar-container">
         <img
+          className="sidebar__avatar"
           src={currentUser?.avatar}
           alt={currentUser?.name}
-          className="sidebar__avatar"
         />
 
         <p className="sidebar__username">{currentUser?.name}</p>

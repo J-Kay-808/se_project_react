@@ -33,7 +33,7 @@ import * as auth from "../../utils/auth";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
-    type: "cold",
+    type: "",
     temp: { F: 999, C: 999 },
     city: "",
   });
@@ -45,8 +45,8 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({
     name: "",
-    email: "",
     avatar: "",
+    email: "",
     _id: "",
   });
 
@@ -126,7 +126,7 @@ function App() {
   };
   const handleSignOut = () => {
     removeToken();
-    navigate("/*");
+    navigate("/");
     setLoggedIn(false);
   };
 

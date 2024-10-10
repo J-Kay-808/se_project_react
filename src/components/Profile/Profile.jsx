@@ -9,6 +9,7 @@ function Profile({
   clothingItems,
   handleAddClick,
   onCardLike,
+  weatherData
 }) {
   return (
     <div className="profile">
@@ -21,6 +22,7 @@ function Profile({
       </section>
       <section className="profile__clothing-items">
         <ClothesSection
+          weatherData={weatherData}
           clothingItems={clothingItems}
           onCardClick={onCardClick}
           handleAddClick={handleAddClick}
