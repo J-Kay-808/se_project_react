@@ -4,7 +4,7 @@ import SideBar from "./SideBar/SideBar";
 
 function Profile({
   handleEditProfileClick,
-  handleLogout,
+  handleSignOut,
   onCardClick,
   clothingItems,
   handleAddClick,
@@ -15,7 +15,7 @@ function Profile({
       <section className="profile__sidebar">
         <SideBar
           handleEditProfileClick={handleEditProfileClick}
-          onLogout={handleLogout}
+          handleSignOut={handleSignOut}
         />
 
       </section>

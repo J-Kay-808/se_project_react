@@ -35,7 +35,7 @@ function Main({ weatherData, onCardClick, clothingItems }) {
                     key={item._id}
                     item={item}
                     onCardClick={onCardClick}
-                    onDelete={handleDeleteCard}
+                    handleDeleteItem={handleDeleteCard}
                   />
                 );
               })}

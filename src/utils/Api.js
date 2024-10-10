@@ -1,6 +1,6 @@
 import { processServerResponse } from "./utils";
 import { getToken } from "./token";
- const baseUrl = "http://localhost:3001";
+const baseUrl = "http://localhost:3001";
 
 function getItems() {
   return fetch(`${baseUrl}/items`).then(processServerResponse);
@@ -10,8 +10,8 @@ function deleteItem(id, token) {
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
   }).then(processServerResponse);
 }

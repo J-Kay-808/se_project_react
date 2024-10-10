@@ -17,6 +17,7 @@ function ItemModal({
     onClose();
   };
 
+
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
@@ -34,9 +35,7 @@ function ItemModal({
 
           <button
             type="button"
-            className={`modal__delete-button ${
-              card.owner === currentUser?._id ? "" : "model__delete_hidden"
-            }`}
+            className="modal__delete-button" 
             onClick={handleDeleteClick}
           >
             {" "}

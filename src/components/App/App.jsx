@@ -148,8 +148,8 @@ function App() {
 
   const onAddItem = (item) => {
     const jwt = getToken();
- 
-      return api
+
+    return api
       .addItem(item, jwt)
       .then((newItem) => {
         setClothingItems((clothingItems) => [newItem.data, ...clothingItems]);
@@ -158,18 +158,35 @@ function App() {
       .catch(console.error);
   };
 
-  const handleDeleteItem = (id) => {
-    const jwt = getToken();
+  // const handleDeleteItem = (id) => {
+  //   const jwt = getToken();
+  //   api
+  //     .deleteItem(id, jwt)
+  //     .then(() => {
+  //       setClothingItems((clothingItems) =>
+  //         clothingItems.filter((item) => item._id !== id),
+  //       );
+  //       closeActiveModal();
+  //     })
+  //     .catch(console.error);
+  // };
+
+  function handleDeleteItem() {
+    const token = localStorage.getItem("jwt");
+
     api
-      .deleteItem(id, jwt)
+      .deleteItem(selectedCard._id, token)
       .then(() => {
-        setClothingItems((clothingItems) =>
-          clothingItems.filter((item) => item._id !== id),
+        setClothingItems((prev) =>
+          prev.filter((item) => item._id !== selectedCard._id)
         );
         closeActiveModal();
       })
       .catch(console.error);
-  };
+  }
+
+
+
 
   const closeActiveModal = () => {
     setActiveModal("");
