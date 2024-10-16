@@ -212,7 +212,7 @@ function App() {
         .then((updatedCard) => {
           console.log(updatedCard);
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === _id ? updatedCard.data : item)),
+            cards.map((item) => (item._id === _id ? updatedCard.item : item)),
           );
         })
         .catch((err) => console.log(err))
@@ -222,7 +222,7 @@ function App() {
         .then((updatedCard) => {
           console.log(updatedCard);
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === _id ? updatedCard.data : item)),
+            cards.map((item) => (item._id === _id ? updatedCard.item : item)),
           );
         })
         .catch((err) => console.log(err));
