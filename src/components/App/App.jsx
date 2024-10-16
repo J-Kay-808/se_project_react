@@ -19,14 +19,6 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import CurrentUserContext from "../../Contexts/CurrentUserContext";
 import { setToken, getToken, removeToken } from "../../utils/token";
-// import { getItems, deleteItem, addItem, likeCard, unlikeCard } from "../../utils/Api";
-// import {
-//   registerUser,
-//   signinUser,
-//   getUserByToken,
-//   updateCurrentUser,
-// } from "../../utils/auth";
-
 import * as api from "../../utils/Api";
 import * as auth from "../../utils/auth";
 
@@ -158,33 +150,18 @@ function App() {
       .catch(console.error);
   };
 
-  // const handleDeleteItem = (id) => {
-  //   const jwt = getToken();
-  //   api
-  //     .deleteItem(id, jwt)
-  //     .then(() => {
-  //       setClothingItems((clothingItems) =>
-  //         clothingItems.filter((item) => item._id !== id),
-  //       );
-  //       closeActiveModal();
-  //     })
-  //     .catch(console.error);
-  // };
-
-  function handleDeleteItem() {
-    const token = localStorage.getItem("jwt");
-
+  const handleDeleteItem = (_id) => {
+    const jwt = getToken();
     api
-      .deleteItem(selectedCard._id, token)
+      .deleteItem(_id, jwt)
       .then(() => {
-        setClothingItems((prev) =>
-          prev.filter((item) => item._id !== selectedCard._id)
+        setClothingItems((clothingItems) =>
+          clothingItems.filter((item) => item._id !== _id),
         );
         closeActiveModal();
       })
       .catch(console.error);
-  }
-
+  };
 
 
 
@@ -226,31 +203,31 @@ function App() {
       .catch(console.error);
   }, []);
 
-  const handleCardLike = ({ id, isLiked }) => {
+  const handleCardLike = ({ _id, isLiked }) => {
     const jwt = localStorage.getItem("jwt");
 
     !isLiked
       ? api
-        .likeCard(id, jwt)
+        .addCardLike(_id, jwt)
         .then((updatedCard) => {
           console.log(updatedCard);
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === id ? updatedCard.data : item)),
+            cards.map((item) => (item._id === _id ? updatedCard.data : item)),
           );
         })
         .catch((err) => console.log(err))
       :
       api
-
-        .removeCardLike(id, jwt)
+        .removeCardLike(_id, jwt)
         .then((updatedCard) => {
           console.log(updatedCard);
           setClothingItems((cards) =>
-            cards.map((item) => (item._id === id ? updatedCard.data : item)),
+            cards.map((item) => (item._id === _id ? updatedCard.data : item)),
           );
         })
         .catch((err) => console.log(err));
   };
+
 
 
 
@@ -277,6 +254,8 @@ function App() {
                     weatherData={weatherData}
                     onCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
+
                   />
                 }
               />
@@ -285,6 +264,7 @@ function App() {
                 element={
                   <ProtectedRoute isLoggedIn={isLoggedIn}>
                     <Profile
+                      weatherData={weatherData}
                       clothingItems={clothingItems}
                       onCardClick={handleCardClick}
                       handleAddClick={handleAddClick}

@@ -17,6 +17,13 @@ function ItemModal({
     onClose();
   };
 
+  const isOwn = card.owner === currentUser._id;
+
+  const itemDeleteButtonClassName = `modal__delete-btn ${
+    isOwn ? "modal__delete-btn_visible" : "modal__delete-btn_hidden"
+  }`;
+
+
 
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
@@ -35,7 +42,7 @@ function ItemModal({
 
           <button
             type="button"
-            className="modal__delete-button" 
+            className={itemDeleteButtonClassName}
             onClick={handleDeleteClick}
           >
             {" "}

@@ -27,7 +27,7 @@ function addItem({ name, imageUrl, weather, }, token) {
   }).then(processServerResponse);
 }
 
-function likeCard(id) {
+function addCardLike(id) {
   const token = getToken();
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
@@ -38,7 +38,7 @@ function likeCard(id) {
   }).then(processServerResponse);
 }
 
-function unlikeCard(id) {
+function removeCardLike(id) {
   const token = getToken();
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
@@ -49,4 +49,4 @@ function unlikeCard(id) {
   }).then(processServerResponse);
 }
 
-export { getItems, deleteItem, addItem, likeCard, unlikeCard };
+export { getItems, deleteItem, addItem, addCardLike, removeCardLike };

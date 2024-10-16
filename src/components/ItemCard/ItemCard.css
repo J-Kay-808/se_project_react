@@ -12,10 +12,11 @@
   }
   
   .card__image {
-    width: 325px;
-    height: 330px;
-    border-radius: 14px;
-    object-fit: fill;
+    width: 100%;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 328px;
+  object-fit: cover;
   }
 
   .card__image:hover {
@@ -42,7 +43,7 @@
     background-repeat: no-repeat;
     cursor: pointer;
     color: black;
-    /* background-color: transparent; */
+    background-color: transparent;
   }
   
   .card__like-button_active {

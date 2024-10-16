@@ -23,25 +23,9 @@
     margin: 0;
     padding: 20px 0px 32px 32px;
   }  
-
-  .modal__delete-button {
-    font-family: "CabinetGrotesk-Medium";
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    text-align: left;
-    color: #ff4d00;
-    background-color: white;
-    border: none;
-    padding: 20px 32px;
-  }
   
-  .modal__delete-button:hover {
+  .modal__delete-btn:hover {
     cursor: pointer;
-  }
-  
-  .model__delete_hidden {
-    display: none;
   }
   
   .modal__footer {
@@ -49,4 +33,19 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+  }
+  .modal__delete-btn {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    color: #ff4d00;
+    border: 0;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .modal__delete-btn_hidden {
+    visibility: hidden;
   }
