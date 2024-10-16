@@ -101,7 +101,7 @@ function App() {
     return auth
       .updateCurrentUser(data, jwt)
       .then((res) => {
-        setCurrentUser(res);
+        setCurrentUser(res.data);
         closeActiveModal();
       })
       .catch(console.error);
