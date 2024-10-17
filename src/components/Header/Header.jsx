@@ -25,7 +25,7 @@ function Header({
   return (
     <header className="header">
       <div className="header__logo-and-date">
-        <Link to="/">
+        <Link to="/profile">
           <img className="header__logo" src={headerLogo} alt="Header Logo" />
         </Link>
         <p className="header__date-and-location">
