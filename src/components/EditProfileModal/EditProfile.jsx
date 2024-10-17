@@ -33,6 +33,11 @@ export const EditProfileModal = ({ onClose, isOpen, handleEditUser }) => {
     handleEditUser(data);
   };
 
+  const isFormValid = () => {
+    return data.name && data.avatar;
+  };
+
+
   return (
     <ModalWithForm
       title="Change profile data"
@@ -66,7 +71,10 @@ export const EditProfileModal = ({ onClose, isOpen, handleEditUser }) => {
           onChange={handleChange}
         />
       </label>
-      <button type="submit" className="modal__edit-submit">
+      <button
+        type="submit"
+        className={`register__link ${isFormValid() ? "active" : ""}`}
+      >
         Save changes
       </button>
     </ModalWithForm>

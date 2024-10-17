@@ -91,7 +91,6 @@ function App() {
       .then((user) => {
         setLoggedIn(true);
         setCurrentUser(user.data);
-        navigate("/profile");
       })
       .catch(console.error);
   }, [navigate]);
@@ -238,7 +237,8 @@ function App() {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <div className="page__content">
-            <Header handleAddClick={handleAddClick}
+            <Header
+              handleAddClick={handleAddClick}
               weatherData={weatherData}
               isLoggedIn={isLoggedIn}
               handleLoginClick={handleLoginClick}
