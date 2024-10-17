@@ -91,9 +91,11 @@ function App() {
       .then((user) => {
         setLoggedIn(true);
         setCurrentUser(user.data);
+        // navigate("/profile");
       })
       .catch(console.error);
   }, [navigate]);
+
 
   const handleEditUser = (data) => {
     const jwt = getToken();
