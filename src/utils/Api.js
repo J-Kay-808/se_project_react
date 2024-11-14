@@ -1,6 +1,8 @@
 import { processServerResponse } from "./utils";
 import { getToken } from "./token";
-const baseUrl = "http://localhost:3001";
+import { baseUrl } from "./constants";
+
+// const baseUrl = "http://localhost:3001";
 
 function getItems() {
   return fetch(`${baseUrl}/items`).then(processServerResponse);

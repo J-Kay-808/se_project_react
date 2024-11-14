@@ -1,5 +1,6 @@
-export const baseUrl = "http://localhost:3001";
+// export const baseUrl = "http://localhost:3001";
 import { processServerResponse } from "./utils";
+import { baseUrl } from "./constants";
 
 function registerUser({ name, avatar, email, password }) {
   return fetch(`${baseUrl}/signup`, {

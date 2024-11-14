@@ -1,6 +1,6 @@
 {
   "name": "se_project_react",
-  "homepage": "http://J-Kay-808.github.io/se_project_react/",
+  "homepage": "https://wtwr.paranormal.com.my",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "npm run build && scp -r ./dist/* jaradcrowell@wtwr.paranormal.com.my:/home/jaradcrowell/frontend"
   },
   "dependencies": {
     "cors": "^2.8.5",
