@@ -1,9 +1,10 @@
-## **WTWR (What to Wear)** 
+## **WTWR (What to Wear)**
 
-## **Overview** 
+## **Overview**
+
 - WTWR is a React-based web app that suggests clothing based on real-time weather data. By fetching weather information from a Weather API, it helps users choose what to wear according to the current conditions. This phase focuses on building a responsive, user-friendly interface.
 
-## **Technologies** 
+## **Technologies**
 
 - **React:** Front-end framework
 - **JavaScript:** Core logic
@@ -20,6 +21,6 @@
 
 ## **Domain**
 
-- **Name:**(https://wtwr.paranormal.com.my)	 
+- **[ Deployed Site Link ](https://wtwr.paranormal.com.my)**
 
-**[Back-End Link](https://github.com/J-Kay-808/se_project_express)**
+- **[Back-End Link](https://github.com/J-Kay-808/se_project_express)**
