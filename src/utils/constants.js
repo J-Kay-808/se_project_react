@@ -78,6 +78,7 @@ export const coordinates = {
 
 export const APIkey = "b7b5f882bbaf1adf5f2f710c45aec050";
 
-export const baseUrl = process.env.NODE_ENV === "production" 
-? "put the URL for your deployed backend here, including https://"
-: "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.paranormal.com.my"
+    : "http://localhost:3001"
